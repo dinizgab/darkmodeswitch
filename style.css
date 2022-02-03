@@ -1,0 +1,94 @@
+/* Body e darkmode ============= */
+body {
+    background-color: #fff;
+    transition: background 0.5s;
+
+    font-family: "Poppins";
+    font-size: 2rem;
+    
+    display: flex;                                              /* Centralizando os itens no centro da página */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    flex-direction: column;                                     /* Colocando o parágrafo abaixo da check box */
+}
+
+p.dark-mode {
+    color: #dddddd;
+    background-color: transparent;
+}
+
+.dark-mode {
+    background-color: #393E46;
+}
+
+/* Criando o switch ============= */
+.switch-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Tornando o checkbox feio invisível para o usuário */
+.switch {                   
+    position: absolute;
+    margin-left: -9999;
+    visibility: hidden;
+}
+
+/* Deixando o espaço ocupado pelo checkbox clicável */
+.switch + label {                                            /* Seletor adojacente ( + ) para selecionar o próximo objeto ao lado dele */
+    display: block;                                        
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    user-select: none;                                       /* Remove a opção de clicar no label do checkbox */
+    margin: auto;
+}
+
+/* Dando um formato para o switch */
+.switch-button + label {                                     /* A label é a responsável pelo funcionamento do switch */ 
+    padding: 2px;
+    width: 120px;
+    height: 60px;
+    border-radius: 60px;
+    background-color: #dddddd;
+}
+
+/* Criando a bolinha que fica dentro do retângulo e seu movimento */
+.switch-button + label:before,
+.switch-button + label:after {                               /* Servem tanto para o after quanto para o before e definem o seu conteúdo */
+    display: block;
+    position: absolute;
+
+    top: 1px;
+    left: 1px;
+    bottom: 1px;
+    content: '';
+}
+
+.switch-button + label:before {                                /* Funcionará quando a checkbox estiver marcada */
+    right: 1px;
+    background-color: #f1f1f1;
+    border-radius: 60px;
+    transition: all 0.4s;
+}
+ 
+.switch-button + label:after {                                /* Funcionará quando a checkbox não estiver marcada */
+    width: 62px;                                              /* Criando a bolinha que fica dentro do switch */
+    left: 1px; 
+    background-color: #fff;
+    border-radius: 60px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);               /* Sombra da bolinha que fica ao redor dela */
+    transition: all 0.4s;                                     /* Criando a animação de transição da esquerda para a direita */
+}
+
+/* Criando a interação com o clique no CSS */
+.switch-button:checked + label:before {                       /* Aqui ele vai ver se a checkbox está marcada e mudar a cor do background */
+    background-color: #8257e6;
+}
+
+.switch-button:checked + label:after {                        /*  Aqui ele vai ver se a checkbox está marcada e mover a bolinha para o lado direito ou esquerdo */
+    transform: translateX(60px);
+}
